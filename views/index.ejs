@@ -6,14 +6,21 @@
   </head>
 
   <body>
-    <ul id='messages'></ul>
-    <form id='userText'>
-      <input id='m' autocomplete='off'/>
-      <button id='textSubmit'>Send</button>
-    </form>
+    <section id='enterName'>
+      What's your name?
+      <input id='userName' type='text'>
+    </section>
+    <section id='chat'>
+      <ul id='messages'></ul>
+      <form id='userText'>
+        <input id='m' autocomplete='off'/>
+        <button id='textSubmit'>Send</button>
+      </form>
+    </section>
     <script src='/socket.io/socket.io.js'></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script src='js/socket.js'></script>
+
   </body>
 
 </html>
