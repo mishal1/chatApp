@@ -10,12 +10,21 @@
       What's your name?
       <input id='userName' type='text'>
     </section>
-      <ul id='messages'></ul>
-      <form id='userText'>
-        <input id='m' autocomplete='off'/>
-        <button id='textSubmit'>Send</button>
-      </form>
-      <h3 id='userTyping'></h3>
+    <ul id='messages'></ul>
+    <form id='userText'>
+      <input id='m' autocomplete='off'/>
+      <button id='textSubmit'>Send</button>
+    </form>
+    <h3 id='userTyping'></h3>
+    <button id='online'>Who is online</button>
+    <section id='onlineUsers'>
+      <a id='exit'>x</a>
+      <h3 id='onlineTitle'>Who is Online</h3>
+      <ul id='users'>
+       <li>someone</li> 
+      </ul>
+    </section>
+
     <script src='/socket.io/socket.io.js'></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script src='js/socket.js'></script>
