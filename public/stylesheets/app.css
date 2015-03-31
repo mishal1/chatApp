@@ -13,7 +13,8 @@ body {
   padding: 3px; 
   position: fixed;
   bottom: 0; 
-  width: 100%; 
+  width: 100%;
+  display: none; 
 }
 #userText input { 
   border: 0; 
@@ -43,6 +44,7 @@ body {
   background: #eee; 
 }
 
-#chat {
-  display: none;
+#userTyping {
+  bottom: 50px;
+  position: fixed;
 }

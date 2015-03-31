@@ -20,6 +20,9 @@ io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     socket.broadcast.emit('send chat message', msg);
   });
+  socket.on('user is typing', function(msg){
+    socket.broadcast.emit('display user is typing', msg)
+  })
 });
 
 http.listen(port, function(){
