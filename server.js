@@ -17,6 +17,9 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(){
     console.log('user disconnected')
   });
+  socket.on('chat message', function(msg){
+    socket.broadcast.emit('send chat message', msg);
+  });
 });
 
 http.listen(port, function(){
