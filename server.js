@@ -13,16 +13,23 @@ app.get('/', function(request, response){
   response.render('index');
 });
 
+app.get('/otherroute', function(request, response){
+  response.render('index');
+});
+
+app.get('/onlineusers', function(request, response){
+  response.render('user');
+});
+
 app.post('/onlineusers', function(request, response){
   response.send(onlineUsers)
 });
 
-var onlineUsers = []
+var onlineUsers = [];
 
 io.on('connection', function(socket){
-var currentUser;
+var currentUser = {};
 
-  console.log('user connected')
 
   socket.on('disconnect', function(){
     console.log('user disconnected')
@@ -32,6 +39,7 @@ var currentUser;
   });
 
   socket.on('chat message', function(msg){
+  socket.broadcast.emit('send msg to other route', msg);
     socket.broadcast.emit('send chat message', msg);
   });
 
@@ -40,8 +48,9 @@ var currentUser;
   });
 
   socket.on('add user', function(name){
-    currentUser = name;
-    onlineUsers.push(name)
+    currentUser.name = name;
+    currentUser.socket = socket.id
+    onlineUsers.push(currentUser)
     console.log(onlineUsers)
   })
 

@@ -1,6 +1,6 @@
 var socket = io();
 
-var username;
+var username, interval;
 
 $('#userName').keypress(function(key){
   if(key.which === 13){
@@ -27,16 +27,16 @@ $('#userText').submit(function(){
 });
 
 $('#online').click(function(){
-  $('#onlineUsers').show();
-  setInterval(function(){
+  interval = setInterval(function(){
     $.ajax({
       url: '/onlineusers',
       type: 'POST',
       success: function(onlineUsers){
         $('#users').text('')
-        onlineUsers.forEach(function(name){
-          $('#users').append($('<li>').text(name));
+        onlineUsers.forEach(function(user){
+          $('#users').append($('<li>').text(user.name));
         });
+        $('#onlineUsers').show();
       }
     });
   }, 1000)
@@ -44,6 +44,7 @@ $('#online').click(function(){
 
 $('#exit').click(function(){
   $('#onlineUsers').hide();
+  clearInterval(interval)
 });
 
 socket.on('send chat message', function(msg){
